@@ -1,0 +1,57 @@
+[package]
+name = "spritefusion-sprite-normals"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+description = "Generate normal maps for pixel art sprites and animations."
+license = "MIT"
+readme = "README.md"
+homepage = "https://www.spritefusion.com/"
+keywords = ["pixel-art", "normal-map", "cli", "wasm", "gamedev"]
+categories = ["command-line-utilities", "multimedia::images"]
+include = ["src/**", "tests/**", "Cargo.toml", "Cargo.lock", "README.md", "LICENSE"]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[[bin]]
+name = "spritefusion-sprite-normals"
+path = "src/main.rs"
+required-features = ["cli"]
+
+[features]
+default = ["cli"]
+cli = ["dep:anyhow", "dep:clap"]
+
+[dependencies]
+anyhow = { version = "1.0", optional = true }
+clap = { version = "4.6", features = ["derive"], optional = true }
+image = { version = "0.24.9", default-features = false, features = ["png", "gif"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "2.0"
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+wasm-bindgen = "=0.2.126"
+
+[dev-dependencies]
+gif = "0.14"
+png = "0.17.16"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+all = { level = "warn", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+# Image dimensions are bounded before allocation; numerical fields use f32.
+cast_precision_loss = "allow"
+cast_possible_truncation = "allow"
+cast_sign_loss = "allow"
+cast_possible_wrap = "allow"
+module_name_repetitions = "allow"
+must_use_candidate = "allow"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
