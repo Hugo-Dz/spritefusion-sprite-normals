@@ -1,5 +1,6 @@
 # Sprite Fusion Sprite Normals
 
+- **Online version**: https://www.spritefusion.com/sprite-normals
 - **API**: https://www.spritefusion.com/docs/pixel-art-generator/api/generate-and-transform-images#normal-maps
 - **MCP**: https://www.spritefusion.com/docs/pixel-art-generator/api/mcp
 
