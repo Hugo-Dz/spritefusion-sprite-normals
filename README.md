@@ -8,7 +8,7 @@ A tool to generate normal maps for pixel art sprites and animations. Written in 
 
 <img src="./static/hero.webp" alt="Sprite Normals" style="width: 100%; image-rendering: pixelated;">
 
-## Why ?
+## Why?
 
 **Normal maps let 2D sprites react to dynamic lighting. Ideal for 2.5D games.**
 
